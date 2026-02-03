@@ -9,15 +9,15 @@ int main(){
    cin >> n >> q;
    vector<long long> a(n),b(n);
    for(int i=0;i < n;i++){
-        cin >> a.at(i);
+        cin >> a[i];
    }
    for(int i=0;i < n;i++){
-        cin >> b.at(i);
+        cin >> b[i];
    }
 
    long long sum = 0;
    for(int i=0;i < n;i++){
-        sum += min(a.at(i),b.at(i));
+        sum += min(a[i],b[i]);
    }
 
    for(int i=0;i < q;i++){
