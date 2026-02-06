@@ -35,9 +35,9 @@ int main(){
             continue;
         }
 
-        auto it = lower_bound(pre_a.begin(),pre_a.end(),b[i]);
+        auto it = lower_bound(a.begin(),a.end(),b[i]);
         long long idx = distance(a.begin(),it);
-        long long ans = pre_a[idx];
+        long long ans = pre_a[idx] + b[i];
         cout << ans << endl;
     }
 
