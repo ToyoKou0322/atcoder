@@ -4,7 +4,24 @@
 
 using namespace std;
 
-//途中
+string simplify(const string& s){
+    string res;
+    for(char c : s){
+        res.push_back(c);
+
+        int n = res.size();
+        if(n >= 4 && res[n-4] == '(' && res[n-3] == 'x' && res[n-2] == 'x' && res[n-1] == ')'){
+            res.pop_back();
+            res.pop_back();
+            res.pop_back();
+            res.pop_back();
+
+            res.push_back('x');
+            res.push_back('x');
+        }
+    }
+    return res;
+}
 
 int main(){
     int t;
@@ -14,21 +31,12 @@ int main(){
         string a,b;
         cin >> a >> b;
 
-        if(a == b){
-            cout << "Yes" << endl;
-            continue;
-        }
-
-        int l = 0;
-        int r = 0;
-        for(int i=0;i < a.size();i++){
-            if(a[i] == '('){
-                l++;
-            }
-            if(a[i] == ')' && r + 1 == l){
-                r++;
-            }
+        if(simplify(a) == simplify(b)){
+            cout << "Yes\n";
+        }else{
+            cout << "No\n";
         }
     }
+    return 0;
 }
 
