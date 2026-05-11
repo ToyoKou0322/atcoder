@@ -15,14 +15,15 @@ int main(){
 
     sort(a.rbegin(),a.rend());
 
-    long long ok = 20000000000LL;
-    long long ng = 0;
+    long long ok = a[0];
+    long long ng = -1;
 
     while(abs(ok - ng) > 1){
-        long long mid = ok + (ng - ok) / 2;
+        long long mid = ng + (ok - ng) / 2;
 
         long long req = 0;
         for(int i=0;i < n;i++){
+            if(a[i] <= mid) continue;
             req += a[i] - mid;
         }
 
@@ -33,6 +34,16 @@ int main(){
         }
     }
 
-    cout << ok << endl;
-}
+    long long ans = 0;
+    long long c = 0;
+    for(int i=0;i < n;i++){
+        if(a[i] > ok){
+            ans += ((ok + 1 + a[i]) * (a[i] - ok)) / 2;
+            c += a[i] - ok;
+        }
+    }
 
+    ans += (k-c) * ok;
+
+    cout << ans << endl;
+}
