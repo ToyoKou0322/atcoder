@@ -25,8 +25,10 @@ int main(){
         }
         ans += ok;
     }
+
     ans *= 4;
     ans++;
     cout << ans << endl;
+    return 0;
 }
 
