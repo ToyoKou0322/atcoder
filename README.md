@@ -1,5 +1,5 @@
 # atcoder
-AtCoderの問題の解答コードと考え方をまとめています。
+AtCoderの問題の解答コードをまとめています。
 abc -> AtCoder Beginner Contest
 arc -> AtCoder Regular Contest
 agc -> AtCoder Grand Contest
