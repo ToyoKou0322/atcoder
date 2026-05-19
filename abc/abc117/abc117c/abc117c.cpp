@@ -12,6 +12,11 @@ int main(){
         cin >> x[i];
     }
 
+    if(n >= m){
+        cout << 0 << endl;
+        return 0;
+    }
+
     sort(x.begin(),x.end());
 
     for(int i=0;i < m;i++){
