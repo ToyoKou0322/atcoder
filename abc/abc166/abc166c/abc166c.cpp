@@ -3,33 +3,15 @@
 #include <algorithm>
 
 using namespace std;
-vector<vector<int>> g;
-vector<long long> h;
-vector<bool> seen;
-
-
-bool dfs(int v){
-    seen[v] = true;
-
-    for(auto next : g[v]){
-        if(h[next] >= h[v]) return false;
-        if(!seen[next] && !dfs(next)){
-            return false;
-        }
-    }
-
-    return true;
-}
 
 int main(){
     int n,m;
     cin >> n >> m;
-    h.resize(n+1);
+    vector<long long> h(n+1);
     for(int i=1;i <= n;i++){
         cin >> h[i];
     }
-
-    g.resize(n+1);
+    vector<vector<int>> g(n+1);
     for(int i=0;i < m;i++){
         int a,b;
         cin >> a >> b;
@@ -37,11 +19,19 @@ int main(){
         g[b].push_back(a);
     }
 
-    seen.assign(n+1,false);
-    long long ans = 0;
+    int ans = 0;
     for(int i=1;i <= n;i++){
-        if(seen[i]) continue;
-        if(dfs(i)) ans++;
+        bool is_good = true;
+
+        for(auto x : g[i]){
+            if(h[i] <= h[x]){
+                is_good = false;
+            }
+        }
+
+        if(is_good){
+            ans++;
+        }
     }
 
     cout << ans << endl;
